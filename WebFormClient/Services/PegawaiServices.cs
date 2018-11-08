@@ -7,6 +7,7 @@ using WebFormClient.Models;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace WebFormClient.Services
 {
@@ -35,6 +36,32 @@ namespace WebFormClient.Services
             return lstPegawai;
         }
 
+        public async Task<Pegawai> GetById(string id)
+        {
+            Pegawai pegawai = new Pegawai();
+            var response = await _client.GetAsync($"api/Pegawai/{id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var content = await response.Content.ReadAsStringAsync();
+                pegawai = JsonConvert.DeserializeObject<Pegawai>(content);
+            }
+            return pegawai;
+        }
 
+        public async Task Insert(Pegawai pegawai)
+        {
+            var newPegawai = JsonConvert.SerializeObject(pegawai);
+            var content =
+                new StringContent(newPegawai, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            try
+            {
+                response = await _client.PostAsync("api/Pegawai",content);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }
