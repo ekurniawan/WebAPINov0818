@@ -11,5 +11,6 @@ namespace SampleAPI.Models
         public string Nip { get; set; }
         public string Norek { get; set; }
         public decimal Jumlah { get; set; }
+        public Pegawai Pegawai { get; set; }
     }
 }

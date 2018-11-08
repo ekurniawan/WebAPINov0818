@@ -2,6 +2,7 @@
 using SampleAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,6 +22,23 @@ namespace SampleAPI.Controllers
         public IEnumerable<Gaji> Get()
         {
             return gajiDAL.GetAll();
+        }
+
+        [Route("api/Gaji/GetGajiWithPegawai")]
+        [HttpGet]
+        public IEnumerable<Gaji> GetGajiWithPegawai()
+        {
+            try
+            {
+                var results = gajiDAL.GetAllGajiWithPegawai();
+                return results;
+            }
+            catch (Exception ex)
+            {
+                Debug.Print(ex.Message);
+                return null;
+            }
+            
         }
 
         // GET: api/Gaji/5

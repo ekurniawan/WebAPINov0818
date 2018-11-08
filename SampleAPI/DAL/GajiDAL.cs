@@ -42,6 +42,21 @@ namespace SampleAPI.DAL
             }
         }
 
+        public IEnumerable<Gaji> GetAllGajiWithPegawai()
+        {
+            using (SqlConnection conn = new SqlConnection(Helper.GetConnectionString()))
+            {
+                string strSql = @"select * from Gaji 
+                                inner join Pegawai on Gaji.Nip=Pegawai.Nip";
+                var results = conn.Query<Gaji, Pegawai, Gaji>(strSql, (g, p) =>
+                {
+                    g.Pegawai = p;
+                    return g;
+                },splitOn:"Nip");
+                return results;
+            }
+        }
+
         public Gaji GetById(string id)
         {
             using (SqlConnection conn = new SqlConnection(Helper.GetConnectionString()))
