@@ -49,13 +49,31 @@ namespace SampleAPI.Controllers
         }
 
         // PUT: api/Gaji/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(Gaji gaji)
         {
+            try
+            {
+                gajiDAL.Update(gaji);
+                return Ok($"Data Rekening {gaji.Norek} berhasil di update");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
         // DELETE: api/Gaji/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(string id)
         {
+            try
+            {
+                gajiDAL.Delete(id);
+                return Ok($"Data berhasil didelete");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error {ex.Message}");
+            }
         }
     }
 }
