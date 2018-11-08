@@ -20,11 +20,12 @@ namespace SampleAPI.DAL
                 var param = new { Id = id };
                 try
                 {
-
+                    //eksekusi perintah delete
+                    conn.Execute(strSql, param);
                 }
                 catch (SqlException sqlEx)
                 {
-                    throw;
+                    throw new Exception($"Error {sqlEx.Number} {sqlEx.Message}");
                 }
 
             }
