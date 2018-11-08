@@ -10,6 +10,7 @@ namespace SampleAPI.DAL
 {
     public class GajiDAL : ICrud<Gaji>
     {
+        //untuk delete data
         public void Delete(string id)
         {
             using (SqlConnection conn = new SqlConnection(Helper.GetConnectionString()))
