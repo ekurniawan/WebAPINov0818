@@ -20,11 +20,11 @@ namespace SampleAPI.DAL
                 var param = new { Id = id };
                 try
                 {
-
+                    conn.Execute(strSql, param);
                 }
                 catch (SqlException sqlEx)
                 {
-                    throw;
+                    throw new Exception("Exception : " + sqlEx.Message);
                 }
 
             }
