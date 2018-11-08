@@ -17,6 +17,14 @@ namespace SampleAPI.DAL
             {
                 string strSql = @"delete from Gaji where Id=@Id";
                 var param = new { Id = id };
+                try
+                {
+
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw;
+                }
 
             }
         }
