@@ -23,12 +23,6 @@ namespace WebFormClient
         protected async void btnGet_Click(object sender, EventArgs e)
         {
             var results = await _services.GetAll();
-
-            foreach(var p in results)
-            {
-                lblPegawai.Text += "<br/>"+p.Nama + "<br/>";
-            }
-
             gvPegawai.DataSource = results;
             gvPegawai.DataBind();
         }
@@ -53,6 +47,40 @@ namespace WebFormClient
             {
                 await _services.Insert(newPegawai);
                 lblPegawai.Text = $"Tambah data {newPegawai.Nama} berhasil";
+            }
+            catch (Exception ex)
+            {
+                lblPegawai.Text = $"Error: {ex.Message}";
+            }
+        }
+
+        protected async void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var updatePegawai = new Pegawai
+            {
+                Nip = txtNip.Text,
+                Nama = txtNama.Text,
+                Telp = txtTelp.Text,
+                Email = txtEmail.Text,
+                Umur = Convert.ToInt32(txtUmur.Text)
+            };
+            try
+            {
+                await _services.Update(updatePegawai);
+                lblPegawai.Text = $"Update data {updatePegawai.Nama} berhasil";
+            }
+            catch (Exception ex)
+            {
+                lblPegawai.Text = $"Error: {ex.Message}";
+            }
+        }
+
+        protected async void btnDelete_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var response = await _services.Delete(txtNip.Text);
+                lblPegawai.Text = $"Delete data berhasil, status {response}";
             }
             catch (Exception ex)
             {

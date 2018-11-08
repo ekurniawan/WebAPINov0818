@@ -63,5 +63,34 @@ namespace WebFormClient.Services
                 throw new Exception(ex.Message);
             }
         }
+
+        public async Task Update(Pegawai pegawai)
+        {
+            var updatePegawai = JsonConvert.SerializeObject(pegawai);
+            var content =
+                new StringContent(updatePegawai, Encoding.UTF8, "application/json");
+            HttpResponseMessage response = null;
+            try
+            {
+                response = await _client.PutAsync("api/Pegawai", content);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public async Task<string> Delete(string id)
+        {
+            try
+            {
+                var response = await _client.DeleteAsync($"api/Pegawai/{id}");
+                return response.StatusCode.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
     }
 }

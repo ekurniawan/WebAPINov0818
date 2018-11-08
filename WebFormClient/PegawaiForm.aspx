@@ -18,8 +18,8 @@
             <asp:Button Text="Get Pegawai" runat="server" ID="btnGet" OnClick="btnGet_Click" />
             <asp:Button Text="Get By Nip" ID="btnGetByNip" runat="server" OnClick="btnGetByNip_Click" />
             <asp:Button Text="Add Pegawai" ID="btnAdd" runat="server" OnClick="btnAdd_Click" />
-            <asp:Button Text="Update Pegawai" ID="btnUpdate" runat="server" />
-            <asp:Button Text="Delete" ID="btnDelete" runat="server" />
+            <asp:Button Text="Update Pegawai" ID="btnUpdate" runat="server" OnClick="btnUpdate_Click" />
+            <asp:Button Text="Delete" ID="btnDelete" runat="server" OnClick="btnDelete_Click" />
             <asp:Label ID="lblPegawai" runat="server" />
             <asp:GridView runat="server" ID="gvPegawai">
             </asp:GridView>
