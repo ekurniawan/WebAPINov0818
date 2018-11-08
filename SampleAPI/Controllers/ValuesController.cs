@@ -7,23 +7,56 @@ using System.Web.Http;
 
 namespace SampleAPI.Controllers
 {
+    /// <summary>
+    /// Controller untuk setup nama
+    /// </summary>
     public class ValuesController : ApiController
     {
-        // GET api/values
+        private static List<string> arrNama = new List<string>
+        {
+            "Erick", "Bambang","Budi","Joko","Amir"
+        };
+
+        /// <summary>
+        /// Mengembalikan semua data nama
+        /// </summary>
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return arrNama;
         }
 
+        /// <summary>
+        /// Menampilkan nama berdasarkan pencarian parameter nama
+        /// </summary>
+        /// <param name="nama">masukan nama yang dicari</param>
+        /// <returns>Collection dari nama</returns>
+        public IEnumerable<string> Get(string nama)
+        {
+            var results = from n in arrNama
+                          where n.ToLower().Contains(nama.ToLower())
+                          select n;
+
+            return results;
+        }
+
+        /// <summary>
+        /// Menampilkan nama berdasarkan id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            var data = arrNama[id];
+            return data;
         }
 
+
         // POST api/values
-        public void Post([FromBody]string value)
+        public IHttpActionResult Post([FromBody]string value)
         {
+            arrNama.Add(value);
+            return Ok($"Data berhasil ditambahkan {value}");
         }
 
         // PUT api/values/5

@@ -1,6 +1,9 @@
-﻿using System;
+﻿
+using SampleAPI.Areas.HelpPage;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web;
 using System.Web.Http;
 
 namespace SampleAPI
@@ -19,6 +22,12 @@ namespace SampleAPI
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            config.SetDocumentationProvider(
+                new XmlDocumentationProvider(
+                HttpContext.Current.Server.MapPath(
+                    "~/App_Data/Documentation.xml")));
         }
     }
 }
