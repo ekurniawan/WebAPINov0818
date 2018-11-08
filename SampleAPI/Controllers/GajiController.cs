@@ -28,17 +28,8 @@ namespace SampleAPI.Controllers
         [HttpGet]
         public IEnumerable<Gaji> GetGajiWithPegawai()
         {
-            try
-            {
-                var results = gajiDAL.GetAllGajiWithPegawai();
-                return results;
-            }
-            catch (Exception ex)
-            {
-                Debug.Print(ex.Message);
-                return null;
-            }
-            
+            var results = gajiDAL.GetAllGajiWithPegawai();
+            return results;
         }
 
         // GET: api/Gaji/5
