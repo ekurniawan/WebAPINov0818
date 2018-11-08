@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAPI", "SampleAPI\SampleAPI.csproj", "{0A73DD9C-1B36-4FDA-ABB3-EA8C41EE078D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFormClient", "WebFormClient\WebFormClient.csproj", "{348B7D74-A0E4-4E1E-AA45-FEF59831F916}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A73DD9C-1B36-4FDA-ABB3-EA8C41EE078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A73DD9C-1B36-4FDA-ABB3-EA8C41EE078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A73DD9C-1B36-4FDA-ABB3-EA8C41EE078D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{348B7D74-A0E4-4E1E-AA45-FEF59831F916}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{348B7D74-A0E4-4E1E-AA45-FEF59831F916}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{348B7D74-A0E4-4E1E-AA45-FEF59831F916}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{348B7D74-A0E4-4E1E-AA45-FEF59831F916}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

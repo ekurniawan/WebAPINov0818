@@ -2,6 +2,7 @@
 using SampleAPI.Models;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -21,6 +22,14 @@ namespace SampleAPI.Controllers
         public IEnumerable<Gaji> Get()
         {
             return gajiDAL.GetAll();
+        }
+
+        [Route("api/Gaji/GetGajiWithPegawai")]
+        [HttpGet]
+        public IEnumerable<Gaji> GetGajiWithPegawai()
+        {
+            var results = gajiDAL.GetAllGajiWithPegawai();
+            return results;
         }
 
         // GET: api/Gaji/5
@@ -49,13 +58,31 @@ namespace SampleAPI.Controllers
         }
 
         // PUT: api/Gaji/5
-        public void Put(int id, [FromBody]string value)
+        public IHttpActionResult Put(Gaji gaji)
         {
+            try
+            {
+                gajiDAL.Update(gaji);
+                return Ok($"Data Rekening {gaji.Norek} berhasil di update");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error: {ex.Message}");
+            }
         }
 
         // DELETE: api/Gaji/5
-        public void Delete(int id)
+        public IHttpActionResult Delete(string id)
         {
+            try
+            {
+                gajiDAL.Delete(id);
+                return Ok($"Data berhasil didelete");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Error {ex.Message}");
+            }
         }
     }
 }
