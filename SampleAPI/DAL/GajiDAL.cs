@@ -15,6 +15,7 @@ namespace SampleAPI.DAL
         {
             using (SqlConnection conn = new SqlConnection(Helper.GetConnectionString()))
             {
+                //dete data - denny eaea
                 string strSql = @"delete from Gaji where Id=@Id";
                 var param = new { Id = id };
                 try
