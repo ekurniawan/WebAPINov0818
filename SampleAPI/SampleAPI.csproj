@@ -199,6 +199,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomError.cs" />
     <Compile Include="Models\Gaji.cs" />
     <Compile Include="Models\Pegawai.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -239,6 +240,7 @@
     </Content>
     <None Include="Properties\PublishProfiles\brilabs - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\brilabs - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\mybackendapps-development - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

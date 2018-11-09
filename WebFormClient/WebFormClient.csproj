@@ -170,6 +170,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\briclient - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\briclient - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="PegawaiForm.aspx" />
     <Content Include="Scripts\bootstrap.js" />
@@ -233,6 +235,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\CustomError.cs" />
     <Compile Include="Models\Gaji.cs" />
     <Compile Include="Models\Pegawai.cs" />
     <Compile Include="PegawaiForm.aspx.cs">

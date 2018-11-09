@@ -80,12 +80,15 @@ namespace WebFormClient.Services
             }
         }
 
-        public async Task<string> Delete(string id)
+        public async Task<CustomError> Delete(string id)
         {
             try
             {
                 var response = await _client.DeleteAsync($"api/Pegawai/{id}");
-                return response.StatusCode.ToString();
+                var custErr = JsonConvert
+                    .DeserializeObject<CustomError>(
+                    await response.Content.ReadAsStringAsync());
+                return custErr;
             }
             catch (Exception ex)
             {

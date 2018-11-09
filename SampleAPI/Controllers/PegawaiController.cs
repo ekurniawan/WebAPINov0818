@@ -74,7 +74,12 @@ namespace SampleAPI.Controllers
             try
             {
                 pegawaiDAL.Delete(id);
-                return Ok($"Delete data Nip {id} berhasil !");
+                var custErr = new CustomError
+                {
+                    StatusCode = "200 OK",
+                    StatusMessage = "Data berhasil ditambah"
+                };
+                return Ok(custErr);
             }
             catch (Exception ex)
             {
